@@ -1,0 +1,31 @@
+{
+  "name": "draganddrop",
+  "version": "1.0.0",
+  "description": "Create a drag and drop stream of photos",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "gulp": "gulp",
+    "start": "npm run gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RoyEun/drag-and-drop.git"
+  },
+  "author": "Roy Eun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RoyEun/drag-and-drop/issues"
+  },
+  "homepage": "https://github.com/RoyEun/drag-and-drop#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-load-plugins": "^1.3.0",
+    "gulp-path": "^3.0.3",
+    "gulp-sass": "^2.3.2",
+    "gulp-to-json": "^1.0.1",
+    "gulp-watch": "^4.3.9",
+    "run-sequence": "^1.2.2"
+  },
+}
