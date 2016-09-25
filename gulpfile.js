@@ -5,30 +5,6 @@ const runSequence = require('run-sequence');
 const browserSync = require('browser-sync').create();
 const paths = require('./config.js').gulpfile;
 
-// gulp.task('bower', () => gulp.src(['./bower.json']).pipe($.install()))
-
-gulp.task('clean:build', () => del([paths.build], { dot: true }));
-// gulp.task('clean:dist', () => del([paths.dist], { dot: true }));
-
-gulp.task('inject', (cb) => {
-  runSequence('inject:css', cb);
-});
-
-gulp.task('inject:css', () => {
-  const injectStyles = gulp.src([paths.mainStyle], { read: false })
-    .pipe($.sort());
-
-  const injectOptions = {
-    // ignorePath: [paths.client],
-    starttag: '<!-- injector:css -->',
-    endtag: '<!-- endinjector -->',
-  }
-  return gulp.src(paths.mainView)
-    .pipe($.inject(injectStyles, injectOptions))
-    .pipe(gulp.dest(paths.client));
-});
-
-
 gulp.task('sass', () => {
   return gulp.src(paths.mainSass)
     .pipe($.sass({outputStyle: 'expanded'}))
@@ -59,7 +35,6 @@ gulp.task('watch', () => {
 
 // https://www.npmjs.com/package/gulp-to-json
 // Used toJson to automate creating the JSON array in the event future pngs are ever added to the images
-
 gulp.task('tojson', function() {
   gulp.src(paths.images)
   .pipe($.toJson({
@@ -68,6 +43,4 @@ gulp.task('tojson', function() {
     }))
 });
 
-// gulp.task('default', cb => runSequence('sass', 'tojson'));
-
-gulp.task('default', cb => runSequence('sass', 'inject', ['serve:dev', 'watch'], cb));
+gulp.task('default', cb => runSequence('sass', ['serve:dev', 'watch'], cb));
