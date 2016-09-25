@@ -32,7 +32,7 @@ gulp.task('inject:css', () => {
 gulp.task('sass', () => {
   return gulp.src(paths.mainSass)
     .pipe($.sass({outputStyle: 'expanded'}))
-    .pipe(gulp.dest(`${paths.client}/assets/styles/`));
+    .pipe(gulp.dest(`${paths.client}/src/assets/styles/`));
 });
 
 gulp.task('serve:dev', () => {
