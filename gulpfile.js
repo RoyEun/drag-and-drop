@@ -1,8 +1,6 @@
 const gulp = require('gulp');
-const del = require('del');
 const $ = require('gulp-load-plugins')();
 const runSequence = require('run-sequence');
-const browserSync = require('browser-sync').create();
 const paths = require('./config.js').gulpfile;
 
 gulp.task('sass', () => {
@@ -21,7 +19,6 @@ gulp.task('serve:dev', () => {
   });
 });
 
-
 gulp.task('watch', () => {
   gulp.watch(paths.sass, ['sass']);
 
@@ -31,7 +28,6 @@ gulp.task('watch', () => {
 
   $.watch(watchedSources).pipe($.connect.reload());
 });
-
 
 // https://www.npmjs.com/package/gulp-to-json
 // Used toJson to automate creating the JSON array in the event future pngs are ever added to the images
