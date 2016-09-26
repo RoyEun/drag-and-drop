@@ -1,10 +1,8 @@
 const gulp = require('gulp');
-const pump = require('pump');
 const $ = require('gulp-load-plugins')();
 const runSequence = require('run-sequence');
 
 const paths = {};
-
 paths.client = 'client';
 paths.build = 'build';
 paths.assets = `${paths.client}/src/assets/**/*`;
@@ -51,21 +49,20 @@ gulp.task('tojson', function() {
 });
 
 gulp.task('prefix-css', () =>
-    gulp.src('src/assets/styles/*.css')
+    gulp.src('./client/src/assets/styles/*.css')
         .pipe($.autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
         }))
-        .pipe(gulp.dest('dist'))
+        .pipe(gulp.dest('./client/dist'))
 );
 
-gulp.task('compress', function() {
-  pump([
-        gulp.src('client/src/gallery/*.js'),
-        $.uglify(),
-        gulp.dest('dist')
-    ]
-  );
+gulp.task('minify', function () {
+    gulp.src('./client/src/**/*.js')
+        .pipe($.jsmin())
+        .pipe($.rename({suffix: '.min'}))
+        .pipe(gulp.dest('./client/dist'));
 });
 
+gulp.task('dist', cb => runSequence('tojson', 'prefix-css', 'minify'));
 gulp.task('default', cb => runSequence('sass', ['serve:dev', 'watch'], cb));
