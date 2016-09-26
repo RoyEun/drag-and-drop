@@ -1,14 +1,13 @@
 body {
   font-size: 30px;
   overflow: auto;
-  color: rgba(200, 20, 20, .5);
 }
 
 li {
   margin: .5px;
   margin-top: 0;
   margin-left: none;
-  border: 1px solid black;
+  border: $border-small;
   box-shadow: 0px 0px 1px 1px gray;
 }
 img {
@@ -16,95 +15,27 @@ img {
   min-width: 100%;
 }
 
-.image-view {
-  background-color: rgba(133, 140, 148, .9);
-}
-
 .banner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-align-center;
   width: 100%;
   height: 100px;
-  color: #e9e9e9;
-  background-color: rgba(0, 28, 41, 1);
-  border: 1px solid black;
-  font-family: Arial, Helvetica, "Open Sans", sans-serif;
-  box-shadow: 2px 2px 2px gray;
+  font-family: Roboto, Helvetica, "Open Sans", sans-serif;
+  color: $charcoal-gray;
+  background-color: $navy-blue;
+  border: $border-small;
+  box-shadow: 2px 2px 2px $charcoal-gray;
   margin-bottom: 1px;
 }
 
-// Tablet
-// @media screen and (min-width: 0px) and (max-width: 321px) {
-//   display: list-item;
-// }
-//
-// @media screen and (min-width: 0px) and (max-width: 320px){
-//   #images {
-//     display: flex;
-//     flex-flow: row wrap;
-//     flex-direction: vertical-align;
-//     li {
-//       display: flex;
-//       flex-shrink: 1;
-//       width: calc(100%);
-//     }
-//   }
-//   .container {
-//     width: 100%;
-//     margin: 0 auto;
-//   }
-// }
-
-@media screen and (min-width: 320px) and (max-width: 400px) {
-  #images {
-    display: flex;
-    flex-flow: row wrap;
-    flex-direction: row;
-    li {
-      display: flex;
-      flex-grow: 1;
-      width: calc(100%);
-    }
-  }
+.gallery {
+  background-color: $blue-gray;
 }
 
-@media screen and (min-width: 401px) {
-  #images {
+#images {
+  @include flex-align-center;
+  flex-flow: row wrap;
+  flex-direction: row;
+  li {
     display: flex;
-    flex-flow: row wrap;
-    flex-direction: row;
-    li {
-      display: flex;
-      flex-grow: 1;
-      width: calc(100% / 3.05);
-    }
-  }
-  .container {
-    width: 90%;
-    margin: 0 auto;
   }
 }
-@media screen and (min-width: 1024px) {
-  #images {
-    display: flex;
-    flex-flow: row wrap;
-    flex-direction: row;
-    li {
-      display: flex;
-      flex-grow: 1;
-      width: calc(100% / 4.1);
-    }
-  }
-}
-//
-// @media screen and (min-width: 1224px) {
-//   #images {
-//     width: 100%;
-//     margin: 0 auto;
-//     li {
-//       display: list-item;
-//       width: calc(100% / 5);
-//     }
-//   }
-// }

@@ -1,5 +1,4 @@
 const paths = {
-  html: {},
   gulpfile: {},
 };
 

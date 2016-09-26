@@ -30,7 +30,7 @@ gulp.task('watch', () => {
 });
 
 // https://www.npmjs.com/package/gulp-to-json
-// Used toJson to automate creating the JSON array in the event future pngs are ever added to the images
+// Use gulp task toJson to automate creating the JSON array in the event future pngs are ever added to the images folder
 gulp.task('tojson', function() {
   gulp.src(paths.images)
   .pipe($.toJson({
