@@ -12,7 +12,7 @@ A responsive gallery of images rendered from a JSON array. Drag and drop functio
 
 #License
 
-You can check out the full license ![here](https://raw.githubusercontent.com/RoyEun/drag-and-drop-master/./LICENSE
+You can check out the full license ![here](https://raw.githubusercontent.com/RoyEun/drag-and-drop-master/LICENSE
 This project is licensed under the terms of the MIT license.
 
 
