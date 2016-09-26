@@ -1,6 +1,6 @@
-const URL = "http://localhost:8000/src/assets/js/images.json";
+const URL = "http://localhost:8000/images.json";
 const $gallery = document.getElementById('images');
-let source;
+let current;
 
 const init = () => {
   const xmlhttp = new XMLHttpRequest();
@@ -20,19 +20,19 @@ const appendImagesToGallery = (images) => {
 };
 
 const createImageElement = (imageObj) => {
-  let li = document.createElement('li');
-  li.setAttribute('draggable', 'true');
-  li.setAttribute('ondragstart', "handleDragStart(event)");
-  li.setAttribute('ondragover', "handleDragOver(event)");
-  li.setAttribute('ondrop', "handleDrop(event)");
-  li.innerHTML = `<img src=${imageObj} />`;
-  return li;
+  let $li = document.createElement('li');
+  $li.setAttribute('draggable', 'true');
+  $li.setAttribute('ondragstart', "handleDragStart(event)");
+  $li.setAttribute('ondragover', "handleDragOver(event)");
+  $li.setAttribute('ondrop', "handleDrop(event)");
+  $li.innerHTML = `<img src=${imageObj} />`;
+  return $li;
 };
 
 const handleDragStart = (event) => {
   // No prevent default needed because this is the default functionality
   event.target.style.opacity = '0.4';
-  source = event.target;
+  current = event.target;
 };
 
 const handleDragOver = (event) => {
@@ -43,9 +43,9 @@ const handleDragOver = (event) => {
 const handleDrop = (event) => {
   event.preventDefault();
   let currentPicture = event.target.outerHTML;
-  source.style.opacity = '1';
-  source.parentElement.innerHTML = currentPicture;
-  event.target.parentElement.innerHTML = source.outerHTML;
+  current.style.opacity = '1';
+  current.parentElement.innerHTML = currentPicture;
+  event.target.parentElement.innerHTML = current.outerHTML;
 };
 
 init();

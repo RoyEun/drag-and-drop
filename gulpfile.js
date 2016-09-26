@@ -1,7 +1,18 @@
 const gulp = require('gulp');
+const pump = require('pump');
 const $ = require('gulp-load-plugins')();
 const runSequence = require('run-sequence');
-const paths = require('./config.js').gulpfile;
+
+const paths = {};
+
+paths.client = 'client';
+paths.build = 'build';
+paths.assets = `${paths.client}/src/assets/**/*`;
+paths.mainSass = `${paths.client}/src/assets/scss/styles.scss`;
+paths.sass = `${paths.client}/src/assets/scss/**/*.scss`;
+paths.mainStyle = `${paths.client}/src/assets/styles/styles.css`;
+paths.images = `${paths.client}/src/assets/img/*.png`;
+paths.mainView = `${paths.client}/index.html`;
 
 gulp.task('sass', () => {
   return gulp.src(paths.mainSass)
@@ -34,9 +45,27 @@ gulp.task('watch', () => {
 gulp.task('tojson', function() {
   gulp.src(paths.images)
   .pipe($.toJson({
-      filename: `${paths.js}/images.json`,
+      filename: `${paths.client}/images.json`,
       strip: /^.+\/?\\?client\/?\\?/
     }))
+});
+
+gulp.task('prefix-css', () =>
+    gulp.src('src/assets/styles/*.css')
+        .pipe($.autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
+        .pipe(gulp.dest('dist'))
+);
+
+gulp.task('compress', function() {
+  pump([
+        gulp.src('client/src/gallery/*.js'),
+        $.uglify(),
+        gulp.dest('dist')
+    ]
+  );
 });
 
 gulp.task('default', cb => runSequence('sass', ['serve:dev', 'watch'], cb));
