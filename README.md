@@ -12,7 +12,7 @@ A responsive gallery of images rendered from a JSON array. Drag and drop functio
 
 #License
 
-You can check out the full license [here!](./License)
+You can check out the full license [here](./License)
 This project is licensed under the terms of the MIT license.
 
 
