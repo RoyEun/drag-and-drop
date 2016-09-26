@@ -1,6 +1,6 @@
 # Drag and drop Gallery
 
-A responsive gallery of images rendered from a JSON array. Drag and drop functionality completed using HTML5 drag and drop methods.
+A responsive gallery of images rendered from a JSON array of .png files. Order of gallery is rearrangable by dragging photo on top of another photo. Drag and drop functionality completed using HTML5 drag and drop methods.
 
 ![alt tag](https://raw.githubusercontent.com/RoyEun/drag-and-drop/master/./gallery.png)
 
